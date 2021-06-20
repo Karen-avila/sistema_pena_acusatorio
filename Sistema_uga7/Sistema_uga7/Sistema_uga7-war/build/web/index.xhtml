@@ -1,0 +1,83 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+       <h:outputStylesheet library="css" name="default.css"/>
+        <h:outputStylesheet library="css" name="cssLayout.css"/>
+        <title>Facelets Template</title>
+    </h:head>
+
+    <body >
+
+       <div id="top">
+            <ui:insert name="top">
+              <div id="imagen"> </div>
+                
+             
+              <h:form>
+                <p:menubar>
+                    
+                    <p:menuitem value="Inicio"  outcome="index" icon="fa fa-home"/>
+                    <p:menuitem value="Iniciar sesión"  outcome="login" icon="fa fa-user"/>
+                    <p:menuitem value="Carpeta"  outcome="puestaLista" icon="fa fa-user"/>
+                </p:menubar>
+                
+                  
+            </h:form>
+            </ui:insert>
+        </div>
+        
+        
+        
+
+        <div id="contente" class="center_contente">
+            <ui:insert name="contente">
+               <h:form id="form">
+                <p:carousel numVisible="1" effect="easeInStrong" headerText="Procuraduria General de Justicia" style="margin-bottom:0">
+        <p:tab title="">
+            <h:panelGrid columns="2" cellpadding="10">
+               <img src="imagenes/fissur.png" width="300" height="95" alt="user"/>
+                <h:outputText
+                    value="Fiscalía de Procesos en Juzgados Penales Sur " />
+            </h:panelGrid>
+        </p:tab>
+        <p:tab title="">
+            <h:panelGrid columns="2" cellpadding="10">
+               
+                <img src="imagenes/usuarios.png" width="128" height="128" alt="user"/>
+
+                <h:outputText value=" Para ingresar al sistema necesitas de un Usuario y Contraseña, que será entregado por el Jefe del Área, 
+                              en caso de olvidar la Contraseña o Usuario, pídela a la persona antes mencionada. Es importante no compartir la contraseña con el personal del área, ya que será su responsabilidad del mal uso que se le a la cuenta."/>
+            
+            </h:panelGrid>
+        </p:tab>
+        <p:tab title="">
+            <h:panelGrid columns="2" cellpadding="10">
+               <img src="imagenes/warning.png" width="128" height="128" alt="user"/>
+                <h:outputText value="En caso de un fallo en el sistema repórtalo de inmediato con el Jefe del Área." />
+            </h:panelGrid>
+        </p:tab>
+    </p:carousel>
+               </h:form>
+                </ui:insert>
+
+        </div>
+        
+         <div id="bottom">
+            <ui:insert name="bottom">
+                
+                <center><h1>2018- P.G.J C.D.M.X</h1></center>
+</ui:insert>
+        </div>
+
+
+    </body>
+
+</html>

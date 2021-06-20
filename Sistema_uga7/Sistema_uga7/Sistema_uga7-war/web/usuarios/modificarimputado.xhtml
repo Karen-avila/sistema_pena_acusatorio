@@ -1,0 +1,500 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+        <ui:composition template="./../templates/plantilla.xhtml">
+
+          
+            <ui:define name="content">
+             <f:view>
+                    
+
+                    <h:form id="formes">
+                          <p:growl id="mensaje" autoUpdate="false" severity="info,fatal" showSummary="true" showDetail="true"/>
+                              <p:fieldset legend="Antecedente de la carpeta"> 
+                                  
+  <h:panelGrid columns="2"  id="pgDatos">
+            
+      <h:outputLabel value="Carpeta para:" for="FkHistoriaOp" />
+  <h:selectOneRadio id="FkHistoriaOp" value="#{carpetaBean.idRelacionCarpetaHistoria}" title="carpeta" required="true" requiredMessage="El campo carpeta es requerido.">
+      <f:selectItems value="#{carpetaBean.hidtoriacarpetaa}" var="combix" itemLabel="#{combix.opcioneshis}" itemValue="#{combix.idhistoria}"/>
+  </h:selectOneRadio>
+      
+  <p:outputLabel value="Fecha de Recibida:" for="fechaDeLlegada" />
+  <p:calendar id="fechaDeLlegada" value="#{carpetaBean.relacioncarpetahistoria.fechaDeLlegada}" locale="es" title="Fecha De Llegada" required="true" requiredMessage="El campo fecha de llegada es requerido"/>
+  
+  </h:panelGrid>
+  </p:fieldset>   
+   <br/>
+                    
+   
+    <p:accordionPanel>
+        <p:tab title="Investigación y Judicialización I">
+    <h:panelGrid columns="6" cellpadding="5">
+    
+                            
+ 
+    <h:outputLabel value="Año:" for="año" />
+    <h:inputText id="año" value="#{carpetaBean.carpeta.año}" title="Año" required="true" requiredMessage="El campo año es requerido."/>
+                         
+    <h:outputLabel value="Carpeta de Investigacion o AV.Previa:" for="idCarpeta" />
+    <h:inputText id="idCarpeta" value="#{carpetaBean.carpeta.carpetaDeInvestigacion}" title="IdCarpeta" required="true" requiredMessage="El campo carpeta de investigacion es requerido."/>
+                            
+    <h:outputLabel value="C/D o S/D:" for="fkCsd" />
+    <h:selectOneRadio id="fkCsd" value="#{carpetaBean.idCSD}" title="C/D o S/D" >
+    
+        <f:selectItems value="#{carpetaBean.combocsdd}" var="combo" itemLabel="#{combo.opciones}" itemValue="#{combo.idCsd}"/>
+    </h:selectOneRadio>
+                            
+     <p:outputLabel value="Fecha de Inicio:" for="fechaDeInicio" />
+     <p:calendar id="fechaDeInicio" value="#{carpetaBean.carpeta.fechaDeInicio}" locale="es" title="Fecha De Inicio" />
+    
+      <p:outputLabel value="Numero de oficio:" for="oficio" />
+      <h:inputText id="oficio" value="#{carpetaBean.procedimiento.numerooficio}" title="Numero de oficio" />
+    
+     <h:outputLabel value="Puesta a Disposicion:" for="fkPuestaDisposicion" />
+     <h:selectOneRadio id="fkPuestaDisposicion" value="#{carpetaBean.idpuestadisp}" title="Puestaa Disposicion" >
+    <f:selectItems value="#{carpetaBean.puestaadispoo}" var="puesta" itemLabel="#{puesta.opciones}" itemValue="#{puesta.idPuestaDisp}"/>
+    </h:selectOneRadio>
+                             
+    <h:outputLabel value="Procedencia:" for="fkProcedencia" />
+    <h:selectOneMenu id="fkProcedencia" value="#{carpetaBean.idprocedencia}" title="Procedencia" >
+    <f:selectItem itemLabel="--Seleccionar--" itemValue="a"/>
+     <f:selectItems value="#{carpetaBean.procedenciaa}" var="proce" itemLabel="#{proce.nombreFiscalia}" itemValue="#{proce.idProcedencia}"/>
+     </h:selectOneMenu>
+                                 
+    <h:outputLabel value="M.P.Propone:" for="MPPropone" />
+    <h:inputText id="MPPropone" value="#{carpetaBean.carpeta.MPPropone}" title="MP Propone" />
+                            
+    <h:outputLabel value="Carpeta Judicial:" for="carpetaJudicial" />
+    <h:inputText id="carpetaJudicial" value="#{carpetaBean.carpeta.carpetaJudicial}" title="Carpeta Judicial" />
+                            
+    <h:outputLabel value="Carpetas Judiciales Acumuladas:" for="carpetasJudicialesAcumuladas" />
+    <h:inputText id="carpetasJudicialesAcumuladas" value="#{carpetaBean.carpeta.carpetasJudicialesAcumuladas}" title="Carpetas Judiciales Acumuladas" />
+    
+    <h:outputLabel value="Carpetas de Origen en Incompetencia:" for="carpetasDeOrigenIncompetencia" />
+    <h:inputText id="carpetasDeOrigenIncompetencia" value="#{carpetaBean.carpeta.carpetasDeOrigenIncompetencia}" title="Carpetas De Origen Incompetencia" />
+    <h:outputLabel value="Unidad de Gestion:" for="fkUnidadGestion" />
+     <h:selectOneMenu id="fkUnidadGestion" value="#{carpetaBean.idunidadgestion}" title="UnidadGestion" >
+        <f:selectItem itemLabel="--Seleccionar--" itemValue="na"/>
+         <f:selectItems value="#{carpetaBean.unidadgestionn}" var="unida" itemLabel="#{unida.opciones}" itemValue="#{unida.idUnidadGestion}"/>
+     </h:selectOneMenu>
+ 
+    <h:outputLabel value="M.P que Trabaja:" for="fkMPTrabaja" />
+    <h:selectOneMenu id="fkMPTrabaja" value="#{carpetaBean.idmptrabaja}" title="MP Trabaja" >
+    <f:selectItem itemLabel="--Seleccionar--" itemValue="y"/>
+        <f:selectItems value="#{carpetaBean.mptrabajaa}" var="mp" itemLabel="#{mp.nombreDeMp}" itemValue="#{mp.idMpTrabaja}"/>
+    </h:selectOneMenu>
+    </h:panelGrid>
+   
+    
+            </p:tab>
+    </p:accordionPanel> 
+    
+    <p:accordionPanel>
+        <p:tab title="Juez de Control en Turno">
+   
+    <h:panelGrid columns="4" >
+     <h:outputLabel value="Nombre(s) Juez de Control en Turno:" for="nombrr" />
+  <h:inputText id="nombrr" value="#{carpetaBean.juezcontrol.nombreS}" title="NombreS" />
+  <h:outputLabel value="Apellido Paterno :" for="apellidopp" />
+<h:inputText id="apellidopp" value="#{carpetaBean.juezcontrol.apellidoP}" title="ApellidoP" />
+ <h:outputLabel value="Apellido Materno:" for="apellidomm" />
+  <h:inputText id="apellidomm" value="#{carpetaBean.juezcontrol.apellidoM}" title="ApellidoM" />
+            
+  </h:panelGrid>
+            </p:tab>
+    </p:accordionPanel> 
+    
+  <p:tabView>
+     
+      
+          <p:tab title="Imputado(s)">
+            <h:panelGrid columns="6" cellpadding="10">
+            
+                
+<h:outputLabel value="Nombre(s):" for="nombre" />
+<h:inputText id="nombre" value="#{carpetaBean.imputado.nombre}" title="Nombre" required="true" requiredMessage="El campo nombre de imputado es requerido."/>
+<h:outputLabel value="Apellido Paterno :" for="apellidoP" />
+<h:inputText id="apellidoP" value="#{carpetaBean.imputado.apellidoP}" title="Apellido Paterno" required="true" requiredMessage="El campo Apellido Paterno de imputado es requerido."/>
+<h:outputLabel value="Apellido Materno:" for="apellidoM" />
+<h:inputText id="apellidoM" value="#{carpetaBean.imputado.apellidoM}" title="Apellido Materno" required="true" requiredMessage="El campo Apellido Materno de imputado es requerido."/>
+<h:outputLabel value="Alias:" for="alias" />
+<h:inputText id="alias" value="#{carpetaBean.imputado.alias}" title="Alias" />
+<h:outputLabel value="Sexo:" for="fkSexo" />
+<h:selectOneMenu id="fkSexo" value="#{carpetaBean.idsexo}" title="Sexo" required="true" requiredMessage="El campo sexo es requerido.">
+<f:selectItem itemLabel="--Seleccionar--" itemValue="se"/> 
+    <f:selectItems value="#{carpetaBean.sexoo}"  var="se" itemLabel="#{se.opciones}" itemValue="#{se.idSexo}"/>
+</h:selectOneMenu>
+<h:outputLabel value="Edad:" for="edad" />
+<h:inputText id="edad" value="#{carpetaBean.destosespecificosdeimputado.edad}" title="Edad" required="true" requiredMessage="El campo edad es requerido."/>
+<h:outputLabel value="Nacionalidad u Origen étnico:" for="nacionalidad" />
+<h:inputText id="nacionalidad" value="#{carpetaBean.imputado.nacionalidad}" title="Nacionalidad" />
+<h:outputLabel value="Representación Consular:" for="representacionConsular" />
+  <h:inputText id="representacionConsular" value="#{carpetaBean.destosespecificosdeimputado.representacionConsular}" title="Representacion Consular" />
+<h:outputLabel value="Ocupación:" for="ocupacion" />
+  <h:inputText id="ocupacion" value="#{carpetaBean.destosespecificosdeimputado.ocupacion}" title="Ocupacion" />
+<h:outputLabel value="Abogado Particular o Publico:" for="abogado" />
+<h:selectOneMenu id="abogado" value="#{carpetaBean.idabogado}" title="abogado" >
+<f:selectItem itemLabel="--Seleccionar--" itemValue="b"/>
+    <f:selectItems value="#{carpetaBean.abogadolista}" var="abog" itemLabel="#{abog.opciones}" itemValue="#{abog.idAbogado}"/>
+</h:selectOneMenu>
+<h:outputLabel value="Delito Primordial:" for="delitoPrimordial" />
+  <h:inputText id="delitoPrimordial" value="#{carpetaBean.destosespecificosdeimputado.delitoPrimordial}" title="Delito Primordial" required="true" requiredMessage="El campo delito primordial es requerido."/>
+ 
+  <h:outputLabel value="Modalidad (Hipotesis):" for="modalidadP" />
+  <h:inputText id="modalidadP" value="#{carpetaBean.destosespecificosdeimputado.modalidadP}" title="Modalidad(Hipotesis)" />
+                                                   
+  <h:outputLabel value="Otro Delito:" for="otroDelito" />
+  <h:inputText id="otroDelito" value="#{carpetaBean.destosespecificosdeimputado.otroDelito}" title="Otro Delito" />
+                                                    
+  <h:outputLabel value="Modalidad (Hipotesis):" for="modalidadS" />
+   <h:inputText id="modalidadS" value="#{carpetaBean.destosespecificosdeimputado.modalidadS}" title="ModalidadS" />
+      </h:panelGrid>
+        </p:tab>
+        
+        
+   <p:tab title="Victimas">
+   <h:panelGrid columns="6" cellpadding="10">
+         <p:tabView>
+       <p:tab title="Victima(s)u Ofendido Mayor de Edad">
+   <h:panelGrid columns="6" cellpadding="10">
+
+<h:outputLabel value="Nombre:" for="nomre" />
+<h:inputText id="nomre" value="#{carpetaBean.victimapersona.nomre}" title="NomBre" />
+ <h:outputLabel value="Apellido Paterno:" for="apellidP" />
+               <h:inputText id="apellidP" value="#{carpetaBean.victimapersona.apellidoP}" title="Apellido Paterno" />
+               <h:outputLabel value="Apellido Materno:" for="apellidM" />
+               <h:inputText id="apellidM" value="#{carpetaBean.victimapersona.apellidoM}" title="Apellido Materno" />
+               <h:outputLabel value="Alias:" for="aliass" />
+               <h:inputText id="aliass" value="#{carpetaBean.victimapersona.alias}" title="Alias" />
+               <h:outputLabel value="Edad:" for="edadk" />
+               <h:inputText id="edadk" value="#{carpetaBean.datosv.edad}" title="Edad" />
+               <h:outputLabel value="Sexo:" for="kSexo" />
+               <h:selectOneMenu id="kSexo" value="#{carpetaBean.idsexo}" title="FkSexo" >
+                   <!-- TODO: update below reference to list of available items-->
+                  <f:selectItem itemLabel="--Seleccionar--" itemValue="se"/>  
+                   <f:selectItems value="#{carpetaBean.sexoo}" var="victim" itemLabel="#{victim.opciones}" itemValue="#{victim.idSexo}"/>
+               </h:selectOneMenu>
+               
+               <h:outputLabel value="Nacionalidad u Origen étnico:" for="acionalidad" />
+               <h:inputText id="acionalidad" value="#{carpetaBean.victimapersona.nacionalidad}" title="Nacionalidad" />
+                 <h:outputLabel value="Ocupacion:" for="ocupacionm" />
+              <h:inputText id="ocupacionm" value="#{carpetaBean.datosv.ocupacion}" title="Ocupacion" />
+                     
+
+
+   </h:panelGrid> 
+   </p:tab>
+       
+      <p:tab title="Victima(s)u Ofendido Menor de Edad">
+   <h:panelGrid columns="6" cellpadding="10">
+
+  <h:outputLabel value="Iniciales:" for="iniciales" />
+  <h:inputText id="iniciales" value="#{carpetaBean.victimamenor.iniciales}" title="Iniciales" />
+  <h:outputLabel value="Nombre:" for="nombe" />
+  <h:inputText id="nombe" value="#{carpetaBean.victimamenor.nombre}" title="Nombre" />
+ <h:outputLabel value="Sexo:" for="fSexo" />
+  <h:selectOneMenu id="fSexo" value="#{carpetaBean.idsexo}" title="FkSexo" >
+ <f:selectItem itemLabel="--Seleccionar--" itemValue="se"/> 
+      <f:selectItems value="#{carpetaBean.sexoo}" var="victim" itemLabel="#{victim.opciones}" itemValue="#{victim.idSexo}"/>
+  </h:selectOneMenu>
+
+    <h:outputLabel value="Nacionalidad:" for="naionalidad" />
+  <h:inputText id="naionalidad" value="#{carpetaBean.victimamenor.nacionalidad}" title="Nacionalidad" />
+ <h:outputLabel value="Observaciones del Menor:" for="observacionesVMenor" />
+  <h:inputText id="observacionesVMenor" value="#{carpetaBean.victimamenor.observacionesVMenor}" title="ObservacionesVMenor" />
+   
+   </h:panelGrid> 
+   </p:tab> 
+       
+       <p:tab title="Victima(s) Empresa">
+  <h:panelGrid columns="6" cellpadding="10">
+  <h:outputLabel value="Nombre:" for="ombre" />
+ <h:inputText id="ombre" value="#{carpetaBean.victimaempresa.nombre}" title="Nombre" />
+           
+
+   </h:panelGrid> 
+   </p:tab>
+         </p:tabView>
+   </h:panelGrid> 
+   </p:tab>
+        
+        
+    <p:tab title="Investigación y Judicialización II">
+   <h:panelGrid columns="6" cellpadding="10">
+   
+  <h:outputLabel value="Calificación del control de legalidad de la detención:" for="calificacion" />
+  <h:selectOneMenu id="calificacion" value="#{carpetaBean.idcalificaciondh}" title="calificacion">
+   <f:selectItem itemLabel="--Seleccionar--" itemValue="c"/>   
+      <f:selectItems value="#{carpetaBean.calificaciondh}" var="calif" itemLabel="#{calif.opciones}" itemValue="#{calif.idCalificacionDh}"/>
+  </h:selectOneMenu> 
+<h:outputLabel value="Fecha de Vinculación a Proceso:" for="fechaVinculacionProces" />
+<p:calendar id="fechaVinculacionProces" value="#{carpetaBean.fecha.fechaVinculacionProceso}" locale="es"  title="Fecha de Vinculacion a Proceso" />
+<h:outputLabel value="Medidas Cautelares Art.155 CNPP:" for="medidasCautelaresArt155" />
+<h:inputText id="medidasCautelaresArt155" value="#{carpetaBean.fecha.medidasCautelaresArt155}" title="Medidas Cautelares Art155" />
+<h:outputLabel value="Fecha de Medida Otorgada:" for="fechaMedidaOtorgad" />
+<p:calendar id="fechaMedidaOtorgad" value="#{carpetaBean.fecha.fechaMedidaOtorgada}" locale="es"  title="Fecha de Medida Otorgada" />
+                                                                                                                                                                       
+<h:outputLabel value="Fecha Plazo Cierre de Investigación:" for="fechaPlazoCierreInvestigacio" />
+<p:calendar id="fechaPlazoCierreInvestigacio" value="#{carpetaBean.fecha.fechaPlazoCierreInvestigacion}" locale="es" title="Fecha Plazo Cierre de Investigacion" />   
+
+<h:outputLabel value="Fecha de Vencimiento:" for="fechaVencimient" />
+<p:calendar id="fechaVencimient" value="#{carpetaBean.fecha.fechaVencimiento}" locale="es"  title="Fecha de Vencimiento" />
+
+<h:outputLabel value="Fecha Prorroga de Investigación:" for="fechaProrogaInvestgacion" />
+<p:calendar id="fechaProrogaInvestgacion" value="#{carpetaBean.fecha.fechaProrrogaInvestgacion}" locale="es"  title="Fecha Proroga de Investgacion" /> 
+
+<h:outputLabel value="Nueva Fecha de Vencimiento Acusación:" for="uevaFechaVencimientoAcusacion" />
+<p:calendar id="uevaFechaVencimientoAcusacion" value="#{carpetaBean.fecha.nuevaFechaVencimientoAcusacion}" locale="es"  title="Nueva Fecha de Vencimiento d Acusacion" />
+                                                                                                                                                                      
+
+   </h:panelGrid> 
+          </p:tab>
+        
+        
+        
+          <p:tab title="Etapa Intermedia">
+            <h:panelGrid columns="6" cellpadding="10">
+                
+ <h:outputLabel value="Fecha de Envio por Procedimiento Abreviado:" for="echaEnvioProcedimientoAbreviado" />
+ <p:calendar id="echaEnvioProcedimientoAbreviado" value="#{carpetaBean.fecha.fechaEnvioProcedimientoAbreviado}" locale="es"  title="Fecha de Envio por Procedimiento Abreviado" />
+ 
+<h:outputLabel value="Fecha de Envio por Estudio Técnico:" for="fechaEnvioEstudioTecnic" />
+<p:calendar id="fechaEnvioEstudioTecnic" value="#{carpetaBean.fecha.fechaEnvioEstudioTecnico}" locale="es" title="Fecha de Envio por Estudio Tecnic" />
+
+<h:outputLabel value="Sobreseimiento:" for="Sobreseimiento" />
+ <h:inputText id="Sobreseimiento" value="#{carpetaBean.procedimiento.sobreseimiento}" title="Fecha de Sobreseimiento" />
+   
+ <h:outputLabel value="Fecha de Sobreseimiento:" for="fechaDeSobreseimiento" />
+ <p:calendar id="fechaDeSobreseimiento" value="#{carpetaBean.procedimiento.fechaDeSobreseimiento}" locale="es"  title="Fecha de Sobreseimiento" />
+ 
+ 
+ <h:outputLabel value="Acuerdo Reparatorio:" for="acuerdoteparatorio" />
+    <p:calendar id="acuerdoteparatorio" value="#{carpetaBean.solucionesalternas.acuerdoReparatorio}"  locale="es" title="Acuerdo reparatorio" />
+               
+ <h:outputLabel value="Suspencion Condicional:" for="suspencionCondiciona" />
+ <p:calendar id="suspencionCondiciona" value="#{carpetaBean.solucionesalternas.suspencionCondicional}" locale="es"  title="Suspencion Condicional" />
+ 
+ <h:outputLabel value="Motivo de suspensión de Proceso:" for="motivoDeSuspencionDeProceso" />
+ <h:inputText id="motivoDeSuspencionDeProceso" value="#{carpetaBean.fecha2.motivoDeSuspencionDeProceso}" title="Motivo de Suspencion de Proceso" />
+ 
+ <h:outputLabel value="Fecha Criterio Oportunidad:" for="fechaCriterioOportunidad" />
+   <p:calendar id="fechaCriterioOportunidad" value="#{carpetaBean.fecha2.fechaCriterioOportunidad}" locale="es"  title="Fecha de Criterio de Oportunidad" />
+    
+   <h:outputLabel value="Fecha Orden de Aprensión Librada:" for="fechaOrdenDeAprensionLibrada" />
+   <p:calendar id="fechaOrdenDeAprensionLibrada" value="#{carpetaBean.fecha2.fechaOrdenDeAprensionLibrada}" locale="es"  title="Fecha de Orden de Aprension Librada" />
+                                                                       
+    <h:outputLabel value="Fecha Orden de Aprensión Cumplida:" for="fechaOrdenCumplida" />
+    <p:calendar id="fechaOrdenCumplida" value="#{carpetaBean.fecha2.fechaOrdenCumplida}"  locale="es" title="Fecha de Orden Cumplida" />
+                                                                      
+    <h:outputLabel value="Fecha Orden de Aprensión Cancelada:" for="fechaOrdenCancelada" />
+    <p:calendar id="fechaOrdenCancelada" value="#{carpetaBean.fecha2.fechaOrdenCancelada}" locale="es"  title="Fecha de Orden Cancelada" />
+ 
+ <h:outputLabel value="Etapa intermedia (SI/NO):" for="etapa" />
+  <h:selectOneMenu id="etapa" value="#{carpetaBean.idetapaintermedia}" title="etapa" >
+       <f:selectItem itemLabel="--Seleccionar--" itemValue="u"/> 
+      <f:selectItems value="#{carpetaBean.listaetapaintermedia}" var="estado" itemLabel="#{estado.opciones}" itemValue="#{estado.idEtapaIntermedia}"/>
+  </h:selectOneMenu>
+                
+<h:outputLabel value="Fecha de Acusación:" for="fechaAcusacion" />
+<p:calendar id="fechaAcusacion" value="#{carpetaBean.fechaintermedia.fechaAcusacion}" locale="es"  title="Fecha de Acusacion" />
+                                                                                                                                        
+ <h:outputLabel value="Fecha de Audiencia Intermedia Señalada:" for="fechaAudienciaInterSeñalada" />
+<h:inputText id="fechaAudienciaInterSeñalada" value="#{carpetaBean.fechaintermedia.fechaAudienciaInterSeñalada}" title="Fecha Audiencia InterSeñalada" />
+                                                                                                                                    
+<h:outputLabel value="Fecha de Audiencia Intermedia Celebrada:" for="fechaAudienciaInterCelebrada" />
+<p:calendar id="fechaAudienciaInterCelebrada" value="#{carpetaBean.fechaintermedia.fechaAudienciaInterCelebrada}" locale="es"  title="Fecha Audiencia Inter Celebrada" />
+
+<h:outputLabel value="Apelación de Exclusión porque Suspende Proc.:" for="apelacionExclucionSuspendeProcu" />
+<p:calendar id="apelacionExclucionSuspendeProcu" value="#{carpetaBean.fechaintermedia.apelacionExclucionSuspendeProcu}" locale="es"  title="Apelacion de Exclucion Suspende Procu" />
+                                                                                                                                       
+<h:outputLabel value="Nombre del Juez de Control:" for="nombreJuezControl" />
+<h:inputText id="nombreJuezControl" value="#{carpetaBean.fechaintermedia.nombreJuezControl}" title="Nombre de Juez de Control" />
+
+ </h:panelGrid>
+        </p:tab>
+        
+      
+      
+  <p:tab title="Etapa de Juicio">
+  <h:panelGrid columns="4" cellpadding="10">
+ 
+ <h:outputLabel value="Fecha Apertura Juicio Oral:" for="fechaAperturaJuicioOral" />
+ <p:calendar id="fechaAperturaJuicioOral" value="#{carpetaBean.fechaintermedia.fechaAperturaJuicioOral}" locale="es" title="Fecha Apertura Juicio Oral" />
+                                                                                                                                      
+ <h:outputLabel value="Carpeta de Juicio:" for="carpetaJuicio" />
+<h:inputText id="carpetaJuicio" value="#{carpetaBean.fechaintermedia.carpetaJuicio}" title="Carpeta de Juicio" />
+                                                                                                                                    
+ <h:outputLabel value="Fecha Celebración de Aud. de Juicio Oral:" for="fechaCelebracionAudJuicioOral" />
+<p:calendar id="fechaCelebracionAudJuicioOral" value="#{carpetaBean.fechaintermedia.fechaCelebracionAudJuicioOral}" locale="es"  title="Fecha Celebracion Aud Juicio Oral" />
+                                                                                                                                      
+   <h:outputLabel value="Fecha Alegatos de Clausura:" for="fechaAlegatosClausura" />
+<p:calendar id="fechaAlegatosClausura" value="#{carpetaBean.fechaintermedia.fechaAlegatosClausura}" locale="es"  title="FechaA legatos de Clausura" />
+            
+<h:outputLabel value="Tipo de Fallo:" for="fallo" />
+<h:selectOneMenu id="fallo" value="#{carpetaBean.idtipodefallo}" title="fallo" required="true" requiredMessage="The Opciones field is required.">
+ <f:selectItem itemLabel="--Seleccionar--" itemValue="f"/> 
+    <f:selectItems value="#{carpetaBean.listatipofallo}" var="tipo" itemLabel="#{tipo.opciones}" itemValue="#{tipo.idTipoDeFallo}"/>
+  </h:selectOneMenu>
+
+ <h:outputLabel value="Fecha de Fallo:" for="fechaDeFallo" />
+<p:calendar id="fechaDeFallo" value="#{carpetaBean.fechaintermedia.fechaDeFallo}" locale="es" title="Fecha de Fallo" />
+                                                                                                                                      
+ <h:outputLabel value="Fecha Audiencia de Lectura de Sentencia:" for="fechaAudienciaLecturaSentencia" />
+<p:calendar id="fechaAudienciaLecturaSentencia" value="#{carpetaBean.fechaintermedia.fechaAudienciaLecturaSentencia}" locale="es"  title="Fecha de Audiencia de Lectura Sentencia" />
+                 
+<h:outputLabel value="Fecha Audiencia Individualización, Sanción, Reparación del Daño:" for="audiencia" />
+<p:calendar id="audiencia" value="#{carpetaBean.termino.fechaAudiencia}" locale="es"  title="audiencia" />
+
+
+<h:outputLabel value="Puntos Resolutivos Sentencia:" for="puntosResolutivosSentencia" />
+<h:inputText id="puntosResolutivosSentencia" value="#{carpetaBean.termino.puntosResolutivosSentencia}" title="Puntos Resolutivos Sentencia" />
+
+<h:outputLabel value="Fecha de Recurso Impuesto (Apelación M.P):" for="fechaRecursoImpuesto" />
+<h:inputText id="fechaRecursoImpuesto" value="#{carpetaBean.termino.fechaRecursoImpuesto}" title="Fecha de Recurso Impuesto" />      
+
+<h:outputLabel value="Resolución de apelación M.P.(Confirma, modifica o revoca):" for="apelacion" />
+<h:selectOneMenu id="apelacion" value="#{carpetaBean.idresolucionMp}" title="apelacion" required="true" requiredMessage="The Opciones field is required.">
+<f:selectItem itemLabel="--Seleccionar--" itemValue="x"/> 
+    <f:selectItems value="#{carpetaBean.listaresolucionapelacion}" var="resolucion" itemLabel="#{resolucion.opciones}" itemValue="#{resolucion.idResolucion}"/>
+</h:selectOneMenu> 
+  
+  </h:panelGrid>
+        </p:tab>
+        
+        
+         <p:tab title="Pena">
+            <h:panelGrid columns="6" cellpadding="10">
+<h:outputLabel value="Año:" for="año" />
+<h:inputText id="año" value="#{carpetaBean.pena.año}" title="Año" />
+<h:outputLabel value="Mes:" for="mes" />
+<h:inputText id="mes" value="#{carpetaBean.pena.mes}" title="Mes" />
+<h:outputLabel value="Dia:" for="dia" />
+<h:inputText id="dia" value="#{carpetaBean.pena.dia}" title="Dia" />
+<h:outputLabel value="Multa:" for="multa" />
+<h:inputText id="multa" value="#{carpetaBean.pena.multa}" title="Multa" />
+<h:outputLabel value="Reparación del daño:" for="daño" />
+<h:selectOneMenu id="daño" value="#{carpetaBean.idreparaciondeldaño}" title="Reparacion de daño" required="true" requiredMessage="The FkCsd field is required.">
+<f:selectItem itemLabel="--Seleccionar--" itemValue="pe"/> 
+  <f:selectItems value="#{carpetaBean.listareparacion}" var="combo" itemLabel="#{combo.opciones}" itemValue="#{combo.idReparacionDaño}"/>
+</h:selectOneMenu>
+<h:outputLabel value="Observación de la Reparación:" for="observacionDeLaReparacion" />
+<h:inputText id="observacionDeLaReparacion" value="#{carpetaBean.pena.observacionDeLaReparacion}" title="Observacion de la Reparacion" />
+                          
+            </h:panelGrid>
+        </p:tab>
+        
+      
+        
+    <p:tab title="Ejecución de sentencia">
+            <h:panelGrid columns="6" cellpadding="10">
+                
+<h:outputLabel value="Tribunal de Juicio Oral (Nombre):" for="tribunalJuicioOral" />
+<h:inputText id="tribunalJuicioOral" value="#{carpetaBean.termino.tribunalJuicioOral}" title="Tribunal de Juicio Oral" />   
+
+<h:outputLabel value="Carpeta de Ejecución:" for="carpetaeje" />
+<h:inputText id="carpetaeje" value="#{carpetaBean.termino.carpetaEjecucion}" title="Carpeta de Ejecucion" />   
+
+
+
+<h:outputLabel value="Fecha de Envio Fiscalia Ejecucion:" for="fechaEnvioFiscaliaEjecucion" />
+<h:inputText id="fechaEnvioFiscaliaEjecucion" value="#{carpetaBean.termino.fechaEnvioFiscaliaEjecucion}" title="Fecha de Envio Fiscalia Ejecucion" />
+
+<h:outputLabel value="Fecha de Audiencia de Ejecucion:" for="fechaAudienciaEjecucion" />
+<p:calendar id="fechaAudienciaEjecucion" value="#{carpetaBean.termino.fechaAudienciaEjecucion}" locale="es"  title="Fecha Audiencia Ejecucion" />
+
+<h:outputLabel value="Resolución de Ejecución:" for="resolucionEjecucion" />
+  <h:inputText id="resolucionEjecucion" value="#{carpetaBean.termino.resolucionEjecucion}" title="Resolucion de Ejecucion" />
+            
+ <h:outputLabel value="Se consede o niega:" for="consede" />
+ <h:selectOneMenu id="consede" value="#{carpetaBean.idseconsede}" title="consede" required="true" requiredMessage="The Opciones field is required.">
+ <f:selectItem itemLabel="--Seleccionar--" itemValue="pl"/> 
+ <f:selectItems value="#{carpetaBean.listaseconsede}" var="seconsede" itemLabel="#{seconsede.opciones}" itemValue="#{seconsede.idOpciones}"/>
+ </h:selectOneMenu>  
+ 
+ <h:outputLabel value="Si se consede:" for="siconsede" />
+ <h:selectOneMenu id="siconsede" value="#{carpetaBean.idsiseconsede}" title="siconsede" required="true" requiredMessage="The Opciones field is required.">
+  <f:selectItem itemLabel="--Seleccionar--" itemValue="si"/> 
+     <f:selectItems value="#{carpetaBean.listasiseconsede}" var="siseconsede" itemLabel="#{siseconsede.opciones}" itemValue="#{siseconsede.idSeConsede}"/>
+  </h:selectOneMenu>   
+ 
+ <h:outputLabel value="Tipo de Beneficio Concedido:" for="tipoDeBeneficioConcedido" />
+ <h:inputText id="tipoDeBeneficioConcedido" value="#{carpetaBean.termino.tipoDeBeneficioConcedido}" title="Tipo De Beneficio Concedido" />
+</h:panelGrid>
+        </p:tab>
+      
+        
+       <p:tab title="Procedimiento abreviado">
+            <h:panelGrid columns="6" cellpadding="10">
+
+<h:outputLabel value="Procedimiento Abreviado:" for="fkProcedimientoOp" />
+<h:selectOneMenu id="fkProcedimientoOp" value="#{carpetaBean.idprocedimiento}" title="FkProcedimientoOp" required="true" requiredMessage="The FkProcedimientoOp field is required.">
+<f:selectItem itemLabel="--Seleccionar--" itemValue="proce"/> 
+    <f:selectItems value="#{carpetaBean.listaproceabreviado}" var="abreviado" itemLabel="#{abreviado.opciones}" itemValue="#{abreviado.idProcedimientoAbr}"/>
+</h:selectOneMenu> 
+
+<h:outputLabel value="Fecha de Sentencia por Procedimiento Abreviado:" for="fechaSentenciaProcAbreviado" />
+<p:calendar id="fechaSentenciaProcAbreviado" value="#{carpetaBean.procedimiento.fechaSentenciaProcAbreviado}" locale="es"  title="Fecha Sentencia Proc Abreviado" />
+       
+<h:outputLabel value="Tipo de Fallo:" for="falo" />
+<h:selectOneMenu id="falo" value="#{carpetaBean.idtipodefallo}" title="fallo" >
+<f:selectItem itemLabel="--Seleccionar--" itemValue="f"/> 
+<f:selectItems value="#{carpetaBean.listatipofallo}" var="fallo" itemLabel="#{fallo.opciones}" itemValue="#{fallo.idTipoDeFallo}"/>
+</h:selectOneMenu>
+
+<h:outputLabel value="Fecha Remitida Sentencia:" for="fechaRemitidaSentencia" />
+<p:calendar id="fechaRemitidaSentencia" value="#{carpetaBean.termino.fechaRemitidaSentencia}" locale="es"  title="Fecha Remitida Sentencia" />
+
+<h:outputLabel value="Fecha Abreviado Condenatorio:" for="fechaAbreviadoCondenatorio" />
+<p:calendar id="fechaAbreviadoCondenatorio" value="#{carpetaBean.termino.fechaAbreviadoCondenatorio}" locale="es"  title="Fecha Abreviado Condenatorio" />
+
+
+                </h:panelGrid>
+        </p:tab>
+      
+ <p:tab title="Etapa Final">
+     <h:panelGrid columns="6" cellpadding="10">
+         
+<h:outputLabel value="Observaciones:" for="observaciones" />
+<h:inputTextarea id="observaciones" value="#{carpetaBean.relacioncarpetahistoria.observaciones}" title="Observaciones" />
+<h:outputLabel value="Estado Actual de la Carpeta:" for="estado" />
+<h:selectOneMenu id="estado" value="#{carpetaBean.idestadoactualcarpeta}" title="estado" required="true" requiredMessage="The Opciones field is required.">
+<f:selectItem itemLabel="--Seleccionar--" itemValue="t"/> 
+    <f:selectItems value="#{carpetaBean.listaestadoactualdecarpeta}" var="estado" itemLabel="#{estado.opciones}" itemValue="#{estado.idEstado}"/>
+</h:selectOneMenu>
+<h:outputLabel value="Asuntos Concluidos" for="asuntos" />
+<h:inputTextarea id="asuntos" value="#{carpetaBean.relacioncarpetahistoria.asuntosconcluidos}" title="Asuntos" />
+<h:outputLabel value="Fecha Asunto Concluido:" for="fechaAsuntoConcluido" />
+<p:calendar id="fechaAsuntoConcluido" value="#{carpetaBean.termino.fechaAsuntoConcluido}" locale="es"  title="Fecha Asunto Concluido" />
+ 
+     </h:panelGrid>  
+ </p:tab>
+      
+      
+        
+ 
+    </p:tabView>
+                         
+                         <h:outputScript library="js" name="spanishlocale.js"/>
+
+                    </h:form>
+                    
+                    
+                    
+                </f:view>
+
+      
+            </ui:define>
+
+
+        </ui:composition>
+
+    </body>
+</html>

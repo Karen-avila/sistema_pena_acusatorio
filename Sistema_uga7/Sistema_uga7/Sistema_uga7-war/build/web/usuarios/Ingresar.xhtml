@@ -1,0 +1,171 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+  
+   
+    <h:body>
+            <ui:composition template="./../templates/plantilla.xhtml">
+                
+ <ui:define name="content">
+       
+     
+                
+      
+ 
+              
+           
+                 <h:form>
+            <p:growl id="mensaje" autoUpdate="false" severity="info,fatal" showSummary="true" showDetail="true"/>
+       
+                <p:fieldset legend="INVESTIGACIÓN Y JUDICIALIZACIÓN">
+                   <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
+        <p:outputLabel for="carpeta" value="Carpeta para:" />
+        <p:selectOneRadio id="carpeta" value="">
+            <f:selectItem itemLabel="Estudio" itemValue="estudio" />
+            <f:selectItem itemLabel="Acusacion" itemValue="acusacion" />
+           </p:selectOneRadio>
+                </h:panelGrid>
+
+                    <p:panelGrid columns="6" layout="grid">
+          
+     
+
+                         <h:outputLabel for="txtaño" value="Año *" />
+            <h:selectOneMenu id="txtaño" value="" required="true" label="año">
+                <f:selectItem itemLabel="--Seleccione--" itemValue="" noSelectionOption="true" />
+                <f:selectItem itemLabel="2010" itemValue="1" />
+                <f:selectItem itemLabel="2011" itemValue="2" /> 
+                <f:selectItem itemLabel="2012" itemValue="1" />
+                <f:selectItem itemLabel="2013" itemValue="2" /> 
+               
+            </h:selectOneMenu>
+            <p:message for="txtaño" />
+                       
+                     <p:outputLabel for="txtCarpeta" value="Carpeta de investigación O AV. Previa"/>
+                       <p:inputText id="txtCarpeta" value="" required="true" requiredMessage="campo requerido"/>
+                       <p:message for="txtCarpeta"/>
+                       
+                        <h:outputLabel for="txtCoS" value="C/D o S/D: *" />
+            <h:selectOneMenu id="txtCoS" value="" required="true" label="C/D o S/D">
+                <f:selectItem itemLabel="--Seleccione--" itemValue="" noSelectionOption="true" />
+                <f:selectItem itemLabel="C/D" itemValue="1" />
+                <f:selectItem itemLabel="S/D" itemValue="2" /> 
+            </h:selectOneMenu>
+            <p:message for="txtCoS" />
+             
+           <p:outputLabel for="txtFechainicio" value="Fecha de inicio:"  />
+                    <p:calendar id="txtFechainicio" value="" locale="es" required="true" />
+                    <p:message for="txtFechainicio"/>
+
+                         <p:outputLabel for="txtFecharecibida" value="Fecha Recibida"/>
+                       <p:calendar id="txtFecharecibida" value="" locale="es" required="true" />
+                       <p:message for="txtFecharecibida"/>
+                    
+                       
+                           <h:outputLabel for="txtPuestaDis" value="Puesta a Disposición SSP o PDI" />
+            <h:selectOneMenu id="txtPuestaDis" value="" required="true" >
+                <f:selectItem itemLabel="--Seleccione--" itemValue="" noSelectionOption="true" />
+                <f:selectItem itemLabel="SSP" itemValue="1" />
+                <f:selectItem itemLabel="PDI" itemValue="2" /> 
+            </h:selectOneMenu>
+            <p:message for="txtPuestaDis" />
+                    
+                         <h:outputLabel for="txtProcedencia" value="Procedencia" />
+            <h:selectOneMenu id="txtProcedencia" value="" required="true" >
+                <f:selectItem itemLabel="--Seleccione--" itemValue="" noSelectionOption="true" />
+                <f:selectItem itemLabel="FISCALIA DESCONCENTRADA DE INVESTIGACION EN ALVARO OBREGON" itemValue="1" />
+                <f:selectItem itemLabel="FISCALIA DESCONCENTRADA DE INVESTIGACION EN BENITO JUAREZ" itemValue="2" /> 
+                <f:selectItem itemLabel="FISCALIA DESCONCENTRADA DE INVESTIGACION EN BENITO JUAREZ" itemValue="4" /> 
+            </h:selectOneMenu>
+            <p:message for="txtProcedencia" />
+                      
+                        <p:outputLabel for="txtMP" value="MP. Propone"/>
+                       <p:inputText id="txtMP" value="" required="true" requiredMessage="campo requerido"/>
+                       <p:message for="txtMP"/>
+                       
+                        <p:outputLabel for="txtCarpetaJ" value="Carpeta Judicial"/>
+                       <p:inputText id="txtCarpetaJ" value="" required="true" requiredMessage="campo requerido"/>
+                       <p:message for="txtCarpetaJ"/>
+                       
+                        <p:outputLabel for="txtCarpetaJA" value="Carpeta Judicial Acumuladas"/>
+                       <p:inputText id="txtCarpetaJA" value="" required="true" requiredMessage="campo requerido"/>
+                       <p:message for="txtCarpetaJA"/>
+                       
+                        <p:outputLabel for="txtCarpetaOI" value="Carpeta de Origen en Incompetencia"/>
+                       <p:inputText id="txtCarpetaOI" value="" required="true" requiredMessage="campo requerido"/>
+                       <p:message for="txtCarpetaOI"/>
+                       
+                       
+                           <h:outputLabel for="txtUnidadG" value="Unidad de Gestión" />
+            <h:selectOneMenu id="txtUnidadG" value="" required="true" >
+                <f:selectItem itemLabel="--Seleccione--" itemValue="" noSelectionOption="true" />
+                <f:selectItem itemLabel="1" itemValue="1" />
+                <f:selectItem itemLabel="2" itemValue="2" /> 
+                <f:selectItem itemLabel="3" itemValue="3" /> 
+                <f:selectItem itemLabel="4" itemValue="1" />
+                <f:selectItem itemLabel="5" itemValue="2" /> 
+                <f:selectItem itemLabel="6" itemValue="3" /> 
+                <f:selectItem itemLabel="7" itemValue="3" /> 
+            </h:selectOneMenu>
+            <p:message for="txtUnidadG" />
+            
+                   
+            
+               <h:outputLabel for="txtMPT" value="M.P. que trabaja" />
+            <h:selectOneMenu id="txtMPT" value="" required="true" >
+                <f:selectItem itemLabel="--Seleccione--" itemValue="" noSelectionOption="true" />
+                <f:selectItem itemLabel="LIC. ROSA ALICIA MOCTEZUMA LULE" itemValue="1" />
+                <f:selectItem itemLabel="LIC. LUIS RODRIGO ARELLANO SANDOVAL" itemValue="2" /> 
+                <f:selectItem itemLabel="LIC. MOISÉS ROMERO AMAYA" itemValue="3" /> 
+                <f:selectItem itemLabel="LIC. GUADALUPE SANCHEZ DEL MONTE" itemValue="1" />
+                <f:selectItem itemLabel="LIC. MARÍA ALEJANDRA ESQUIVEL MARTÍNEZ" itemValue="2" /> 
+                <f:selectItem itemLabel="LIC. CESAR MIGUEL TOVAR GARCÍA" itemValue="3" /> 
+                <f:selectItem itemLabel="LIC. HÉCTOR GONZÁLEZ JOYA" itemValue="3" /> 
+            </h:selectOneMenu>
+            <p:message for="txtMPT" />
+                    
+                   
+                     
+                       
+                    </p:panelGrid>
+                    
+                    <p:commandButton icon="ui-icon-check" value="Registrar"  />
+                    
+                </p:fieldset>
+          
+        </h:form>
+     
+     
+     
+  
+           </ui:define>
+        
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+
+        </ui:composition>
+    </h:body>
+
+</html>

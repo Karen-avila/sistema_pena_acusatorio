@@ -1,0 +1,125 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      <h:outputStylesheet library="css" name="cssLayout.css"/>  
+
+    <body>
+
+        <ui:composition template="./../templates/plantilla.xhtml">
+
+            <ui:define name="content">
+           
+                
+                <f:view>
+
+
+                    <h:form>
+                        <h1><h:outputText value="List"/></h1>
+                        <p:dataTable value="#{carpetaBean.relacioncarpetaimpp}" var="item"   paginator="true" paginatorPosition="top"  emptyMessage="No hay datos de usuarios" widgetVar="tablaCarpetaBuscar" filteredValue="#{carpetaBean.relacioncarpetaimputadofilter}">
+                                    <f:facet name="header">
+            <p:outputPanel>
+                <h:outputText value="Buscar:"/>
+               <!--  <h:commandLink>
+                <img src="../imagenes/pdf-240x240.png" width="24" alt="pdf-240x240"/>
+  <p:dataExporter type="csv" target="exis" fileName="Usuarios" />
+            </h:commandLink>-->
+              <p:inputText  id="globalFilter" onkeyup="PF('tablaCarpetaBuscar').filter()" style="width:330px" placeholder="Inserte la palabra clave"/>
+            </p:outputPanel>
+                            
+        </f:facet>
+                     
+                            <p:column filterBy="#{item.fkCarpeta.año}">
+                                <f:facet name="header">
+                                    <h:outputText value="Año"/>
+                                </f:facet>
+                                <h:outputText value="#{item.fkCarpeta.año}"/>
+                            </p:column>
+                            <p:column filterBy="#{item.fkCarpeta.carpetaDeInvestigacion}">
+                                <f:facet name="header">
+                                    <h:outputText value="Carpeta de Investigación"/>
+                                </f:facet>
+                                <h:outputText value="#{item.fkCarpeta.carpetaDeInvestigacion}"/>
+                            </p:column>
+                             <p:column filterBy="#{item.fkCarpeta.fechaDeInicio}">
+                                <f:facet name="header">
+                                    <h:outputText value="Fecha de Inicio"/>
+                                </f:facet>
+                                 <h:outputText value="#{item.fkCarpeta.fechaDeInicio}">
+                                    <f:convertDateTime pattern="MM/dd/yyyy" />
+                                </h:outputText>
+                            </p:column>
+                            <p:column filterBy="#{item.fkCarpeta.MPPropone}">
+                                <f:facet name="header">
+                                    <h:outputText value="MP Propone"/>
+                                </f:facet>
+                                <h:outputText value="#{item.fkCarpeta.MPPropone}"/>
+                            </p:column>
+                            <p:column filterBy="#{item.fkCarpeta.carpetaJudicial}">
+                                <f:facet name="header">
+                                    <h:outputText value="Carpeta Judicial"/>
+                                </f:facet>
+                                <h:outputText value="#{item.fkCarpeta.carpetaJudicial}"/>
+                            </p:column>
+                            <p:column >
+                                <f:facet name="header">
+                                    <h:outputText value="Carpetas Judiciales Acumuladas"/>
+                                </f:facet>
+                                <h:outputText value="#{item.fkCarpeta.carpetasJudicialesAcumuladas}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Carpetas de Origen e Incompetencia"/>
+                                </f:facet>
+                                <h:outputText value="#{item.fkCarpeta.carpetasDeOrigenIncompetencia}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="MP Trabaja"/>
+                                </f:facet>
+                                <h:outputText value="#{item.fkCarpeta.fkMPTrabaja.nombreDeMp}"/>
+                            </p:column>
+                             <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Unidad de Gestión"/>
+                                </f:facet>
+                                 <h:outputText value="#{item.fkCarpeta.fkUnidadGestion.opciones}"/>
+                            </p:column>
+                              <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Puesta a Disposición"/>
+                                </f:facet>
+                                  <h:outputText value="#{item.fkCarpeta.fkPuestaDisposicion.opciones}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Procedencia"/>
+                                </f:facet>
+                                <h:outputText value="#{item.fkCarpeta.fkProcedencia.nombreFiscalia}"/>
+                            </p:column>
+                          
+                            
+                            <p:column>
+                                
+                               <p:commandButton value="Editar" action="modificarcarpeta" actionListener="#{carpetaBean.prepararModificar}" />
+                                
+                            </p:column> 
+                          
+                        </p:dataTable>
+                    </h:form>
+                </f:view>
+
+            </ui:define>
+
+         
+        </ui:composition>
+
+    </body>
+</html>
+
+
+

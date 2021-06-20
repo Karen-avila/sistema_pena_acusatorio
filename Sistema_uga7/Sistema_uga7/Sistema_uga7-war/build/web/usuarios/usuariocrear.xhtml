@@ -1,0 +1,86 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+        <ui:composition template="./../templates/plantilla.xhtml">
+
+             <ui:define name="content">
+              
+               
+                <h:form >
+                    <p:panel id="panel" header="Crear un nuevo Usuario" style="margin-bottom:10px;">
+            <p:growl id="mensaje" autoUpdate="false" severity="info,fatal" showSummary="true" showDetail="true"/>
+         <p:fieldset legend="Datos Personales">
+                    <h:panelGrid columns="3" id="pgDatos">
+                    
+                    <p:outputLabel for="txtNombres" value="Nombres:" />
+                    <p:inputText id="txtNombres" value="#{usuarioBean.persona.nombres}" required="true"/>
+                    <p:message for="txtNombres"/>
+                    
+                    <p:outputLabel for="txtApellidos" value="Apellidos:"  />
+                    <p:inputText id="txtApellidos" value ="#{usuarioBean.persona.apellidos}" required="true"/>
+                        <p:message for="txtApellidos"/>
+                    <p:outputLabel for="rdbSexo" value="Sexo:" />
+                    <p:selectOneRadio id="rdbSexo" value="#{usuarioBean.persona.sexo}" required="true">
+                        <f:selectItem itemValue="M" itemLabel="Masculino"/>
+                        <f:selectItem itemValue="F" itemLabel="Femenino"/>
+                    </p:selectOneRadio>
+                    <p:message for="rdbSexo"/>
+                    
+                    <p:outputLabel for="txtFecha" value="Fecha de nacimiento:"  />
+                    <p:calendar id="txtFecha" value="#{usuarioBean.persona.fechaDeNacimiento}" locale="es" required="true" />
+                    <p:message for="txtFecha"/>
+                    
+                    </h:panelGrid>
+                 </p:fieldset>
+             <br></br> <br></br>
+                <p:fieldset legend="Datos de la cuenta">
+                    <h:panelGrid columns="3" id="pgCuenta">
+                       <p:outputLabel for="cboTipo" value="Tipo de cuenta"/>
+                       <p:selectOneMenu id="cboTipo" value="#{usuarioBean.usuario.tipo}" required="true" requiredMessage="campo requerido" > 
+                       <f:selectItem itemValue="A" itemLabel="Administrador"/>
+                       <f:selectItem itemValue="O" itemLabel="Usuario"/>
+                       </p:selectOneMenu>
+                       
+                       <p:message for="cboTipo"/>
+                       
+                       <p:outputLabel for="txtUsuario" value="usuario"/>
+                       <p:inputText id="txtUsuario" value="#{usuarioBean.usuario.usuario}" required="true" requiredMessage="campo requerido"/>
+                       <p:message for="txtUsuario"/>
+                       
+                       <p:outputLabel for="clave1" value="Clave"/>
+                      <p:password  id="clave1" value="#{usuarioBean.usuario.clave}" required="true" requiredMessage="campo requerido" validatorMessage="Las claves no coinciden" weakLabel="Debil" strongLabel="Fuerte"
+                       goodLabel="Bueno" match="clave2" feedback="true" promptLabel="Ingrese la contraseña"/>
+                    <p:message for="clave1"/>
+                    <p:outputLabel for="clave2" value="Repetir Clave"/>
+                    <p:password id="clave2" required="true" requiredMessage="campo requerido"/>
+                    <p:message for="clave2"/>
+                    </h:panelGrid>
+                   
+                </p:fieldset>
+             <br></br>
+                    </p:panel>
+             <center>
+                    <p:commandButton icon="ui-icon-check" value="Registrar"   update="pgDatos, pgCuenta,mensaje"   actionListener="#{usuarioBean.registrar()}"/>
+                    <p:commandButton id="btn_reset" value="Limpiar" type="reset"/>
+             </center>    
+           
+       
+        </h:form>
+        <h:outputScript library="js" name="spanishlocale.js"/>
+      
+               
+               
+               
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

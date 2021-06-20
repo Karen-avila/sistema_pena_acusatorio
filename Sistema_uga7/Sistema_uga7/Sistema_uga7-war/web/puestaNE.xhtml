@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./templates/newTemplate.xhtml">
+
+            <ui:define name="content">
+                <f:view>
+
+
+                    <h:form>
+                        <h1><h:outputText value="Create/Edit"/></h1>
+                        <h:panelGrid columns="2">
+                            <h:outputLabel value="IdPuestaDisp:" for="idPuestaDisp" />
+                            <h:inputText id="idPuestaDisp" value="#{carpetaBean.puestaadispo.idPuestaDisp}" title="IdPuestaDisp" required="true" requiredMessage="The IdPuestaDisp field is required."/>
+                            <h:outputLabel value="Opciones:" for="opciones" />
+                            <h:inputText id="opciones" value="#{carpetaBean.puestaadispo.opciones}" title="Opciones" />
+                        </h:panelGrid>
+                    </h:form>
+                </f:view>
+
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

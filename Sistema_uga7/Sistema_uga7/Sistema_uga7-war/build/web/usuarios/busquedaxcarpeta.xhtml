@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+        <ui:composition template="./../templates/plantilla.xhtml">
+
+             <ui:define name="content">
+           
+                
+                <f:view>
+
+
+                  
+                    <h:form>
+                        <h:panelGrid columns="5">
+                            <p:outputLabel for ="cal" value="Fecha"/>
+                            <p:calendar id="cal" locale="es" required="true"/>
+                            
+                            <p:outputLabel for="cboCarpeta" value="Carpeta de investigacion"/>
+                            <p:selectOneMenu id="cboCarpeta" value="#{buscadorBean.idhistoriacarp}" title="carpeta" required="true" requiredMessage="El campo carpeta es requerido.">
+                                 <f:selectItem itemLabel="Seleccionar " itemValue="#{null}" noSelectionOption="true"/>
+                                 <f:selectItems value="#{buscadorBean.hidtoriacarpetaa}" var="combix" itemLabel="#{combix.opcioneshis}" itemValue="#{combix.idhistoria}"/>
+                               
+                            </p:selectOneMenu>
+                            
+                      
+                            <p:commandButton icon="ui-icon-search" value="Buscar" update="grid" actionListener="#{buscadorBean.buscar()}"/>
+                            
+                        </h:panelGrid>
+                        <p:dataGrid id="grid" value="#{buscadorBean.relacionCarpetaHistoriaa}" var="relacion">
+                            <p:outputLabel value ="#{buscadorBean.relacioncarpetahistoria.fkHistoriaOp.opcioneshis}"/>
+                            <p:outputLabel value ="#{buscadorBean.relacioncarpetahistoria.fkCarpeta.carpetaDeInvestigacion}"/>
+                            <p:outputLabel value ="#{buscadorBean.relacioncarpetahistoria.observaciones}"/>
+                        </p:dataGrid>
+                       
+                    </h:form>
+                </f:view>
+
+                
+                
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

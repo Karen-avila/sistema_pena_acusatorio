@@ -1,0 +1,127 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      <h:outputStylesheet library="css" name="cssLayout.css"/>   
+    <body>
+
+        <ui:composition template="./../templates/plantilla.xhtml">
+
+            <ui:define name="content">
+                <h:form> 
+                                   
+                    <h2>Listado de Usuarios en Servidor</h2>
+                  
+                <br/>
+                    <p:dataTable id ="exis"  paginator="true" paginatorPosition="top"
+                                 var="item" value="#{usuarioBean.lista}" emptyMessage="No hay datos de usuarios" widgetVar="tablaUsuariosBuscar" filteredValue="#{usuarioBean.usuariofilter}">
+                        
+                        <f:facet name="header">
+            <p:outputPanel>
+                <h:outputText value="Buscar:"  />
+               <!--  <h:commandLink>
+                <img src="../imagenes/pdf-240x240.png" width="24" alt="pdf-240x240"/>
+  <p:dataExporter type="csv" target="exis" fileName="Usuarios" />
+            </h:commandLink>-->
+              <p:inputText  id="globalFilter" onkeyup="PF('tablaUsuariosBuscar').filter()" style="width:330px" placeholder="Inserte la palabra clave"/>
+            </p:outputPanel>
+                            
+        </f:facet>
+                        
+                        
+                      
+                        <!--sortBy="" -->
+                        <p:column filterBy="#{item.usuario}">
+                                <f:facet name="header">
+                                    <h:outputText value="Nombre de Usuario"/>
+                                </f:facet>
+                            <h:outputText value="#{item.usuario}"/>
+                            </p:column>
+                        <p:column >
+                                <f:facet name="header">
+                                    <h:outputText value="Contraseña"/>
+                                </f:facet>
+                            <h:outputText value="#{item.clave}"/>
+                            </p:column>
+                            
+                            
+                        
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Tipo de Cuenta"/>
+                                </f:facet>
+                                <h:outputText value="#{item.tipo}"/>
+                            </p:column>
+                        
+                        
+                        
+                        
+                         <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Estado"/>
+                                </f:facet>
+                             <h:outputText value="#{item.estado}"/>
+                            </p:column> 
+                      
+                        <p:column filterBy="#{item.PCodigo.nombres} #{item.PCodigo.apellidos}">
+                                <f:facet name="header">
+                                    <h:outputText value="Nombre"/>
+                                </f:facet>
+                             <h:outputText value="#{item.PCodigo.nombres} #{item.PCodigo.apellidos}"/>
+                            </p:column> 
+                      
+                                                 <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Sexo"/>
+                                </f:facet>
+                                                     <h:outputText value="#{item.PCodigo.sexo}"/>
+                            </p:column>
+                        
+                          <p:column>
+                                <f:facet name="header">
+                                    <h:outputLabel   value="Fecha de Nacimiento"/>
+                                </f:facet>
+                              <p:calendar pattern="dd/MM/yyy"  locale="es" value="#{item.PCodigo.fechaDeNacimiento}"/>
+                           
+                           </p:column> 
+                      
+                        
+                            <p:column>
+                                
+                                <p:commandButton value="Editar" action="modificarusuaro" actionListener="#{usuarioBean.prepararModificar}" />
+                                
+                                
+                            </p:column>
+                               
+                        
+                        
+                 </p:dataTable>
+                
+                  
+                           
+                        
+                        
+                        
+                        
+                        
+                        
+                </h:form>
+                
+            </ui:define>
+
+        </ui:composition>
+        
+        
+       
+        
+        
+        
+        
+        
+
+    </body>
+</html>
